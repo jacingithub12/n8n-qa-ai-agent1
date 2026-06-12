@@ -13,14 +13,20 @@ El proyecto está diseñado bajo un enfoque modular, separando la ingesta y enri
 * **Lógica Condicional (If Node):** Validación del dominio del correo electrónico del remitente para determinar de forma automática si es una fuente confiable (`isTrusted: true/false`).
 * **Enriquecimiento con IA (Basic LLM Chain):** Un modelo de lenguaje analiza el contenido ingresado para generar etiquetas (*tags*) semánticas clave, optimizando la posterior búsqueda del bot.
 * **Almacenamiento:** Inserción ordenada de los registros enriquecidos dentro de una base de datos interna (*n8n Data Tables*).
+![Flujo de Ingesta de Datos n8n](image_6a773d.png)
 
 ### 2. Flujo del Agente de IA (`QA AI Agent`)
 * **Interface:** Trigger de chat interactivo nativo integrado con el *Chat Hub* de n8n.
 * **Memoria Integrada (Simple Memory):** Mantiene el contexto de las conversaciones de forma síncrona basándose en el identificador de sesión (`sessionId`).
 * **Uso de Herramientas (Tools):** El agente cuenta con una herramienta personalizada para consultar la base de datos interna mediante filtros avanzados de coincidencia de texto (*contains*) en las columnas de preguntas y etiquetas.
 * **Garantía Anti-Alucinación:** El sistema de instrucciones fuerza al agente a notificar al usuario si no encuentra información respaldada en la base de datos, evitando respuestas inventadas.
+![Flujo del Agente de IA n8n](image_6a7718.png)
 
 ---
+## 💬 Resultado Final (Chat Hub)
+Opcionalmente, se integró el flujo con el Chat Hub de n8n para permitir una interfaz de usuario interactiva y fluida:
+
+![Resultado del chat con el Agente de IA](image_6a76dd.png)
 
 ## 🛠️ Tecnologías Utilizadas
 
